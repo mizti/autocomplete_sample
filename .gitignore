@@ -9,3 +9,5 @@ temp/*
 logs/*
 *.pyc
 **/*.pyc
+**/nohup.out
+

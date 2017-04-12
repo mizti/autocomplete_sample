@@ -17,15 +17,20 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from projectname.home.views import HomeView
+from autocomplete import views
 
-admin.autodiscover()
+#from autocomplete import views
+#import projectname.autocomplete
 
+#admin.autodiscover()
+print("hoge******************")
 urlpatterns = [
     # Homepage
-    url(r'^autocomplete/$', 'autocomplete.views.index'),
-    #url(r'^autocomplete/(00)/$', 'autocomplete.views.suggest'),
-    url(r'^autocomplete/([0-9a-zA-Z]+)/$', 'autocomplete.views.suggest'),
+    #url(r'^autocomplete/$', 'autocomplete.views.index'),
+    url(r'^autocomplete/$', 'projectname.autocomplete.views.index'),
+    url(r'^autocomplete/([0-9a-zA-Z]+)/$', 'projectname.autocomplete.views.suggest'),
+    #url(r'^autocomplete/([0-9a-zA-Z]+)/$', 'views.suggest'),
     url(r'^$', HomeView.as_view(), name='home'),
-    url(r'^admin/', include(admin.site.urls))
+    #url(r'^admin/', include(admin.site.urls))
     #url(r'^autocomplete/(?P<input>[0-9a-zA-Z]d+)/$', 'autocomplete.suggest')
 ]
