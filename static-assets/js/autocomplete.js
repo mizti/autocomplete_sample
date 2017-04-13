@@ -7,10 +7,9 @@ $(function(){
               type: "GET",
               url: "/autocomplete/" + encodeURIComponent(req.term.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()),
               dataType: "json",
-          }).always(function(data) {
-              console.log(data);
+          }).done(function(data) {
+              console.log('done!');
               res(data);
-              console.log('always!');
           }).fail(function(data) {
               console.log('error!');
               console.log(data);
