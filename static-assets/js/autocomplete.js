@@ -5,7 +5,7 @@ $(function(){
       source: function( req, res ) {
           $.ajax({
               type: "GET",
-              url: "/autocomplete/" + encodeURIComponent(req.term.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()),
+              url: "/autocomplete/" + encodeURIComponent(req.term.replace(/[^a-zA-Z0-9]/g, '').toLowerCase())+ "/",
               dataType: "json",
           }).done(function(data) {
               console.log('done!');

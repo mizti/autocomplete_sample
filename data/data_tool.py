@@ -26,6 +26,8 @@ column_name = b'pname'
 row_key = 'sonywalkman'
 cell_value = 'Sony Walkman'
 
+
+exit()
 for line in open('name.txt', 'r'):
     row_key = re.sub(r'[^a-zA-Z0-9]', '', line).lower()
     cell_value = re.sub(r'\"', '', line).rstrip('\n')
@@ -34,18 +36,3 @@ for line in open('name.txt', 'r'):
     row = table.row(row_key)
     row.set_cell(column_family_name, column_name, cell_value)
     row.commit()
-exit()
-
-# ===== memo =====
-#append a cell to a column
-
-
-row_data = table.read_row(row_key)
-if row_data is not None:
-    print(row_data.cells[column_family_name][column_name][0].value)
-else:
-    print('row_data empyt')
-
-#Delete cells in a row x column
-#row.delete_cell(u'cf1', 'pname')
-#row.commit()
