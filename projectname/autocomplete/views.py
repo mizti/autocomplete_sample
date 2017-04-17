@@ -38,6 +38,7 @@ def get_data(row_key):
     column_name = b'pname'
     #filt = RowKeyRegexFilter(b'.+')
     filt = RowKeyRegexFilter(b'.+') # can be enhanced
+    #filt = RowKeyRegexFilter(b'.+') # can be enhanced
     row_data = table.read_rows(start_key=row_key,limit=5,filter_=filt)
     row_data.consume_all()
     rows = row_data.rows

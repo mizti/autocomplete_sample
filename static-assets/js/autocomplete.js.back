@@ -1,29 +1,19 @@
 //$(document).ready(function(){
 $(function(){
-/*
-  var data = [
-      'sample1',
-      'sample2',
-      'sample3',
-      'sample4'
-  ];
-*/
-  data = [
-                  { label: "India", value: "IND" },
-                  { label: "Australia", value: "AUS" }
-         ];
   $('#example-search-input').autocomplete({
       //source: data,
       source: function( req, res ) {
           $.ajax({
               type: "GET",
-              //url: "http://example.com/autocomplete/" + encodeURIComponent(req.term),
-              url: "http://localhost:8080/autocomplete/" + encodeURIComponent(req.term),
+              url: "/autocomplete/" + encodeURIComponent(req.term.replace(/[^a-zA-Z0-9]/g, '').toLowerCase())+ "/",
               dataType: "json",
-              success: function(data) {
-                  console.log(data);
-                  res(data);
-              }
+          }).done(function(data) {
+              console.log(data);
+              console.log(encodeURIComponent(req.term.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()));
+              res(data);
+          }).fail(function(data) {
+              //console.log('error!');
+              //console.log(data);
           });
       },
       autoFocus: true,
