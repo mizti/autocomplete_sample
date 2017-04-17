@@ -19,6 +19,7 @@ $(function(){
                       i--;
                   }
               }
+              console.log(data);
               res(data);
           }).fail(function(data) {
               //console.log('error!');
